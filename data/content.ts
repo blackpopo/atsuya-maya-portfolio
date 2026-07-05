@@ -1,4 +1,4 @@
-// =============================================================
+﻿// =============================================================
 // サイトの中身はすべてこのファイルで編集できます。
 // { ja: "...", en: "..." } の形式で日英併記になります。
 // =============================================================
@@ -82,7 +82,7 @@ export const publications: {
     category: { ja: '国際会議', en: 'International Conferences' },
     items: [
       {
-        authors: 'A. Takashiro, B. Author, C. Author',
+        authors: 'A. Matsumoto, B. Author, C. Author',
         title: 'Sample Paper Title: Placeholder for Your Publication',
         venue: {
           ja: 'Proc. of XXX 2025（要編集）',
@@ -98,7 +98,7 @@ export const publications: {
     category: { ja: '国内発表', en: 'Domestic Presentations' },
     items: [
       {
-        authors: '高城敦也, 著者B',
+        authors: '松本篤弥, 著者B',
         title: 'サンプル発表タイトル（要編集）',
         venue: { ja: '〇〇学会 2024', en: 'XX Society Annual Meeting 2024' },
         year: '2024',
@@ -109,7 +109,7 @@ export const publications: {
     category: { ja: '受賞', en: 'Awards' },
     items: [
       {
-        authors: '高城敦也',
+        authors: '松本篤弥',
         title: 'サンプル受賞名（要編集）',
         venue: { ja: '〇〇学会', en: 'XX Society' },
         year: '2024',
