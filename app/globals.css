@@ -379,19 +379,19 @@ a:hover {
 
 .hero-scene .moth {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 60%;
+  top: -6%;
+  left: -4%;
+  width: 88%;
   animation: float 8s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(232, 228, 245, 0.35))
-    drop-shadow(0 0 80px rgba(168, 156, 232, 0.25));
+  filter: drop-shadow(0 0 34px rgba(232, 228, 245, 0.4))
+    drop-shadow(0 0 100px rgba(168, 156, 232, 0.28));
 }
 
 .hero-scene .rabbit {
   position: absolute;
   bottom: 0;
-  right: 5%;
-  width: 42%;
+  right: 4%;
+  width: 34%;
   filter: drop-shadow(0 0 26px rgba(168, 156, 232, 0.22));
 }
 
