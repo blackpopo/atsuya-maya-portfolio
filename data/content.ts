@@ -22,8 +22,8 @@ export const profile = {
     en: 'Atsuya Matsumoto',
   },
   role: {
-    ja: '博士課程学生 / ヒューマンロボットインタラクション',
-    en: 'Ph.D. Student / Human-Robot Interaction',
+    ja: '博士課程学生 / ヒューマンAIインタラクション',
+    en: 'Ph.D. Student / Human-AI Interaction',
   },
   affiliation: {
     ja: '東京大学大学院（要編集：研究科・研究室名）',
@@ -43,8 +43,8 @@ export const profile = {
 
 export const origin = {
   statement: {
-    ja: '私の研究の原点は、クラシックショコラのビジュアルノベル『NOeSIS』シリーズの登場人物・一夜さんです。目標は、彼女を現実世界でシミュレーションし、自律的に暮らせるようにすることです。記憶・関係性・エージェンシーに関する研究は、すべてこの目標のためにあります。',
-    en: 'The origin of my research is Maya (一夜), a character from the visual novel series "NOeSIS" by Classic Chocolat. My goal is to simulate her in the real world so that she can live autonomously. My research on memory, relationships, and agency all serves this goal.',
+    ja: '私の研究の原点は、cutlassさん（サークル：クラシックショコラ）が制作したビジュアルノベル『NOeSIS』シリーズの登場人物・一夜さんです。目標は、彼女を現実世界でシミュレーションし、自律的に暮らせるようにすることです。記憶・関係性・エージェンシーに関する研究は、すべてこの目標のためにあります。',
+    en: 'The origin of my research is Maya (一夜), a character from the visual novel series "NOeSIS" created by cutlass (circle: Classic Chocolat). My goal is to simulate her in the real world so that she can live autonomously. My research on memory, relationships, and agency all serves this goal.',
   },
   // 出典（Steamで無料公開中）
   works: [
@@ -62,11 +62,13 @@ export const origin = {
     en: 'Both available for free on Steam',
   },
   credit:
-    '画像・キャラクター: © クラシックショコラ（cutlass）『NOeSIS』シリーズ / Images & characters © Classic Chocolat (cutlass), NOeSIS series',
+    '掲載イラストはすべて『NOeSIS』の作者・cutlassさん（サークル：クラシックショコラ）による公式イラストです。© クラシックショコラ / All illustrations are official artwork by cutlass (circle: Classic Chocolat), the creator of NOeSIS. © Classic Chocolat',
   gallery: [
     { src: '/maya/cover.jpg', alt: 'NOeSIS — 運命の車輪' },
     { src: '/maya/smile.jpg', alt: '一夜さん / Maya' },
     { src: '/maya/duo.jpg', alt: 'クラシックショコラ — 廃墟と女の子' },
+    { src: '/maya/maid.jpg', alt: '一夜さん / Maya (maid)' },
+    { src: '/maya/wink.jpg', alt: '一夜さん / Maya' },
     { src: '/maya/chibi.jpg', alt: '一夜さん / Maya (chibi)' },
   ],
 };

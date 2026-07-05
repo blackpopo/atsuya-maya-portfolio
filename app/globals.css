@@ -357,13 +357,13 @@ a:hover {
   box-shadow: 0 0 22px rgba(232, 228, 245, 0.3);
 }
 
-/* ヒーロー右：切り抜きの白い蚕蛾が夜に浮かぶ */
-.hero-moth {
+/* ヒーロー右：夜のなかで、黒いうさぎ（私）が舞う白い蚕蛾（一夜さん）を見上げる */
+.hero-scene {
   position: relative;
   justify-self: center;
   width: 100%;
-  max-width: 440px;
-  animation: float 8s ease-in-out infinite;
+  max-width: 470px;
+  aspect-ratio: 1 / 1.02;
   pointer-events: none;
 }
 
@@ -377,22 +377,33 @@ a:hover {
   }
 }
 
-.hero-moth img {
-  width: 100%;
-  display: block;
-  filter: drop-shadow(0 0 34px rgba(232, 228, 245, 0.35))
-    drop-shadow(0 0 90px rgba(168, 156, 232, 0.25));
+.hero-scene .moth {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  animation: float 8s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(232, 228, 245, 0.35))
+    drop-shadow(0 0 80px rgba(168, 156, 232, 0.25));
+}
+
+.hero-scene .rabbit {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  width: 42%;
+  filter: drop-shadow(0 0 26px rgba(168, 156, 232, 0.22));
 }
 
 @media (max-width: 840px) {
-  .hero-moth {
-    max-width: 280px;
+  .hero-scene {
+    max-width: 320px;
     margin: 0 auto;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-moth,
+  .hero-scene .moth,
   .aurora {
     animation: none;
   }
@@ -517,46 +528,6 @@ a:hover {
   font-size: 0.85rem;
   margin-top: 1.4rem;
   text-align: right;
-}
-
-/* 見上げる構図：黒いうさぎ（私）と、舞う白い蚕蛾（一夜さん） */
-.origin-scene {
-  position: relative;
-  height: 320px;
-  margin-top: 2rem;
-  pointer-events: none;
-}
-
-.origin-scene .scene-rabbit {
-  position: absolute;
-  right: 14%;
-  bottom: 0;
-  width: 180px;
-  filter: drop-shadow(0 0 22px rgba(168, 156, 232, 0.2));
-}
-
-.origin-scene .scene-moth {
-  position: absolute;
-  right: calc(14% + 190px);
-  bottom: 165px;
-  width: 140px;
-  filter: drop-shadow(0 0 26px rgba(232, 228, 245, 0.4));
-  animation: float 7s ease-in-out infinite;
-}
-
-@media (max-width: 640px) {
-  .origin-scene {
-    height: 240px;
-  }
-  .origin-scene .scene-rabbit {
-    right: 6%;
-    width: 130px;
-  }
-  .origin-scene .scene-moth {
-    right: calc(6% + 140px);
-    bottom: 120px;
-    width: 100px;
-  }
 }
 
 .origin-gallery {

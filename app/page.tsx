@@ -89,9 +89,12 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="hero-moth" aria-hidden="true">
+            {/* 白い蚕＝一夜さんを、黒いうさぎ＝私が見上げる構図 */}
+            <div className="hero-scene" aria-hidden="true">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/art/moth-fly.png" alt="" />
+              <img className="moth" src="/art/moth-fly.png" alt="" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="rabbit" src="/art/rabbit-sit.png" alt="" />
             </div>
           </div>
         </section>
@@ -274,13 +277,6 @@ export default function Home() {
               ))}
             </div>
             <p className="origin-credit">{origin.credit}</p>
-            {/* 白い蚕＝一夜さん、黒いうさぎ＝私。見上げる構図 */}
-            <div className="origin-scene" aria-hidden="true">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="scene-moth" src="/art/moth-fly.png" alt="" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="scene-rabbit" src="/art/rabbit-sit.png" alt="" />
-            </div>
           </div>
         </section>
 
