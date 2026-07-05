@@ -3,30 +3,53 @@ import {
   education,
   publications,
   projects,
-  type Bilingual,
 } from '@/data/content';
+import Particles from './components/Particles';
+import Reveal from './components/Reveal';
+import ScrollProgress from './components/ScrollProgress';
 
-function SectionTitle({ ja, en }: Bilingual) {
+function SectionTitle({
+  index,
+  ja,
+  en,
+}: {
+  index: string;
+  ja: string;
+  en: string;
+}) {
   return (
     <>
+      <div className="section-index">
+        {index} — {en}
+      </div>
       <h2 className="section-title">{ja}</h2>
-      <div className="section-title-en">{en}</div>
     </>
   );
 }
 
+const bannerGradients = [
+  'linear-gradient(135deg, #46e0ff, #7b5cff)',
+  'linear-gradient(135deg, #ff4fd8, #7b5cff)',
+  'linear-gradient(135deg, #7b5cff, #46e0ff 60%, #ff4fd8)',
+];
+
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
+      <Particles />
+
       <header className="site-header">
         <div className="container">
           <a className="logo" href="#top">
-            {profile.name.en.split(' ')[0]}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={profile.avatar} alt="" />
+            ATSUYA
           </a>
           <nav className="site-nav">
             <a href="#about">About</a>
-            <a href="#publications">Publications</a>
-            <a href="#projects">Projects</a>
+            <a href="#publications">Research</a>
+            <a href="#projects">Works</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>
@@ -34,51 +57,73 @@ export default function Home() {
 
       <main id="top">
         {/* ---------- Hero ---------- */}
-        <section className="hero container">
-          <h1 className="name">
-            {profile.name.ja}
-            <span className="name-en">{profile.name.en}</span>
-          </h1>
-          <div className="role bi">
-            {profile.role.ja}
-            <span className="en"> / {profile.role.en}</span>
-          </div>
-          <div className="affiliation">
-            {profile.affiliation.ja} — {profile.affiliation.en}
-          </div>
-          <p className="summary">{profile.summary.ja}</p>
-          <p className="summary">{profile.summary.en}</p>
-          <div className="hero-links">
-            {profile.links.map((link) => (
-              <a
-                key={link.label}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {link.label}
-              </a>
-            ))}
+        <section className="hero">
+          <div className="aurora aurora-1" />
+          <div className="aurora aurora-2" />
+          <div className="aurora aurora-3" />
+          <div className="container">
+            <div>
+              <div className="hero-kicker">Emergence / 羽化</div>
+              <h1 className="name">
+                {profile.name.ja}
+                <span className="name-en">{profile.name.en}</span>
+              </h1>
+              <div className="role">
+                {profile.role.ja}
+                <br />
+                <span className="en">{profile.role.en}</span>
+              </div>
+              <div className="affiliation">
+                {profile.affiliation.ja}
+                <br />
+                {profile.affiliation.en}
+              </div>
+              <p className="summary">{profile.summary.ja}</p>
+              <p className="summary">{profile.summary.en}</p>
+              <div className="hero-links">
+                {profile.links.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className="avatar-wrap">
+              <div className="avatar-frame">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={profile.avatar} alt={profile.name.ja} />
+              </div>
+            </div>
           </div>
         </section>
 
         {/* ---------- About / Education ---------- */}
         <section className="section" id="about">
           <div className="container">
-            <SectionTitle ja="経歴" en="Education & Experience" />
+            <Reveal>
+              <SectionTitle index="01" ja="経歴" en="Education & Experience" />
+              <p className="section-lead">
+                これまでの歩み / Where I&apos;ve been
+              </p>
+            </Reveal>
             <ul className="timeline">
-              {education.map((item) => (
+              {education.map((item, i) => (
                 <li key={item.period + item.title.en}>
-                  <div className="period">{item.period}</div>
-                  <div>
-                    <div>{item.title.ja}</div>
+                  <Reveal delay={i * 120}>
+                    <div className="period">{item.period}</div>
+                    <div className="title-ja">{item.title.ja}</div>
                     <div className="title-en">{item.title.en}</div>
                     {item.detail && (
                       <div className="detail">
                         {item.detail.ja} / {item.detail.en}
                       </div>
                     )}
-                  </div>
+                  </Reveal>
                 </li>
               ))}
             </ul>
@@ -88,38 +133,47 @@ export default function Home() {
         {/* ---------- Publications ---------- */}
         <section className="section" id="publications">
           <div className="container">
-            <SectionTitle ja="研究・業績" en="Publications" />
+            <Reveal>
+              <SectionTitle index="02" ja="研究・業績" en="Publications" />
+              <p className="section-lead">
+                論文・発表・受賞 / Papers, talks & awards
+              </p>
+            </Reveal>
             {publications.map((group) => (
               <div key={group.category.en}>
-                <h3 className="pub-category">
-                  {group.category.ja}
-                  <span className="en">{group.category.en}</span>
-                </h3>
+                <Reveal>
+                  <h3 className="pub-category">
+                    {group.category.ja}
+                    <span className="en">{group.category.en}</span>
+                  </h3>
+                </Reveal>
                 <ol className="pub-list">
-                  {group.items.map((pub) => (
-                    <li key={pub.title}>
-                      <div className="pub-title">
-                        {pub.link ? (
-                          <a
-                            href={pub.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {pub.title}
-                          </a>
-                        ) : (
-                          pub.title
-                        )}
-                        {pub.badge && (
-                          <span className="pub-badge">
-                            {pub.badge.ja} / {pub.badge.en}
-                          </span>
-                        )}
-                      </div>
-                      <div className="pub-meta">
-                        {pub.authors}. <em>{pub.venue.ja}</em>, {pub.year}.
-                      </div>
-                    </li>
+                  {group.items.map((pub, i) => (
+                    <Reveal key={pub.title} delay={i * 100}>
+                      <li>
+                        <div className="pub-title">
+                          {pub.link ? (
+                            <a
+                              href={pub.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {pub.title}
+                            </a>
+                          ) : (
+                            pub.title
+                          )}
+                          {pub.badge && (
+                            <span className="pub-badge">
+                              {pub.badge.ja} / {pub.badge.en}
+                            </span>
+                          )}
+                        </div>
+                        <div className="pub-meta">
+                          {pub.authors}. <em>{pub.venue.ja}</em>, {pub.year}.
+                        </div>
+                      </li>
+                    </Reveal>
                   ))}
                 </ol>
               </div>
@@ -130,51 +184,83 @@ export default function Home() {
         {/* ---------- Projects ---------- */}
         <section className="section" id="projects">
           <div className="container">
-            <SectionTitle ja="作品・プロジェクト" en="Projects" />
+            <Reveal>
+              <SectionTitle index="03" ja="作品・プロジェクト" en="Works" />
+              <p className="section-lead">
+                つくったもの / Things I&apos;ve built
+              </p>
+            </Reveal>
             <div className="project-grid">
-              {projects.map((project) => (
-                <div className="project-card" key={project.name.en}>
-                  <h3>
-                    {project.link ? (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {project.name.ja}
-                      </a>
-                    ) : (
-                      project.name.ja
-                    )}
-                    <span className="en">{project.name.en}</span>
-                  </h3>
-                  <p>
-                    {project.description.ja}
-                    <br />
-                    {project.description.en}
-                  </p>
-                  <div className="tech-tags">
-                    {project.tech.map((tech) => (
-                      <span key={tech}>{tech}</span>
-                    ))}
+              {projects.map((project, i) => (
+                <Reveal key={project.name.en} delay={i * 130}>
+                  <div className="project-card">
+                    <div
+                      className="project-banner"
+                      style={{
+                        background: bannerGradients[i % bannerGradients.length],
+                      }}
+                    >
+                      <span className="num">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <div className="project-body">
+                      <h3>
+                        {project.link ? (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {project.name.ja}
+                          </a>
+                        ) : (
+                          project.name.ja
+                        )}
+                        <span className="en">{project.name.en}</span>
+                      </h3>
+                      <p>
+                        {project.description.ja}
+                        <br />
+                        {project.description.en}
+                      </p>
+                      <div className="tech-tags">
+                        {project.tech.map((tech) => (
+                          <span key={tech}>{tech}</span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
         </section>
+
+        {/* ---------- Contact ---------- */}
+        <section className="section" id="contact">
+          <div className="container">
+            <Reveal>
+              <div className="contact-card">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={profile.avatar} alt={profile.name.ja} />
+                <h2>Get in Touch</h2>
+                <p>
+                  お気軽にご連絡ください / Feel free to reach out
+                </p>
+                <a className="contact-btn" href={`mailto:${profile.email}`}>
+                  {profile.email}
+                </a>
+              </div>
+            </Reveal>
+          </div>
+        </section>
       </main>
 
-      {/* ---------- Footer / Contact ---------- */}
-      <footer className="site-footer" id="contact">
+      <footer className="site-footer">
         <div className="container">
-          <div className="contact">
-            Contact: <a href={`mailto:${profile.email}`}>{profile.email}</a>
-          </div>
-          <div>
-            © {new Date().getFullYear()} {profile.name.en}. Built with Next.js,
-            deployed on Cloudflare Pages.
-          </div>
+          © {new Date().getFullYear()} {profile.name.en}. Built with Next.js,
+          deployed on Cloudflare.
         </div>
       </footer>
     </>

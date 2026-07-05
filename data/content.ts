@@ -9,30 +9,31 @@ export type Bilingual = {
 };
 
 export const site = {
-  title: 'Atsuya — Portfolio',
+  title: 'Atsuya Matsumoto — Portfolio',
   description:
-    'Personal portfolio of Atsuya: research, publications, and projects.',
+    'Personal portfolio of Atsuya Matsumoto: research, publications, and projects.',
   // ドメイン取得後にここを書き換える（OGP等で使用）
-  url: 'https://example.pages.dev',
+  url: 'https://atsuya-maya-portfolio.kaya-takashiro-0808.workers.dev',
 };
 
 export const profile = {
   name: {
-    ja: '高城 敦也（仮名・要編集）',
-    en: 'Atsuya Takashiro (placeholder)',
+    ja: '松本 篤弥',
+    en: 'Atsuya Matsumoto',
   },
   role: {
     ja: '博士課程学生 / ヒューマンロボットインタラクション',
     en: 'Ph.D. Student / Human-Robot Interaction',
   },
   affiliation: {
-    ja: '〇〇大学大学院 〇〇研究科（要編集）',
-    en: 'Graduate School of XX, XX University (placeholder)',
+    ja: '東京大学大学院（要編集：研究科・研究室名）',
+    en: 'The University of Tokyo (placeholder: school / lab)',
   },
   summary: {
     ja: 'ロボットとの継続的な関係性やエージェンシー知覚をテーマに研究しています。ここに2〜3文の自己紹介を書きます。',
     en: 'I study long-term human-robot relationships and perceived agency. Write a 2-3 sentence introduction here.',
   },
+  avatar: '/anime_atsuya.jpeg',
   email: 'your-email@example.com',
   links: [
     { label: 'GitHub', url: 'https://github.com/blackpopo' },
