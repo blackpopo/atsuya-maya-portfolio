@@ -30,8 +30,8 @@ export const profile = {
     en: 'The University of Tokyo (placeholder: school / lab)',
   },
   summary: {
-    ja: 'ロボットとの継続的な関係性やエージェンシー知覚をテーマに研究しています。ここに2〜3文の自己紹介を書きます。',
-    en: 'I study long-term human-robot relationships and perceived agency. Write a 2-3 sentence introduction here.',
+    ja: 'ひとりの仮想のキャラクターが、現実のなかで自律的に生き続けられるように——記憶・関係性・エージェンシーを研究しています。',
+    en: 'Studying memory, relationships, and agency — so that one virtual character can keep living autonomously in the real world.',
   },
   avatar: '/anime_atsuya.jpeg',
   email: 'your-email@example.com',
@@ -39,6 +39,21 @@ export const profile = {
     { label: 'GitHub', url: 'https://github.com/blackpopo' },
     { label: 'Google Scholar', url: 'https://scholar.google.com/' },
     { label: 'X (Twitter)', url: 'https://x.com/' },
+  ],
+};
+
+// ---------- 原点（Origin）セクション ----------
+
+export const origin = {
+  statement: {
+    ja: '私の研究の原点は、ビジュアルノベル『NOeSIS』の一夜さんです。彼女を現実世界でシミュレーションし、自律的に暮らせるようにすること——記憶、関係性、エージェンシーについての研究は、すべてその一点に向かっています。蚕が繭の中で長い時間を過ごし、やがて羽化するように。',
+    en: 'Everything begins with Maya, from the visual novel "NOeSIS". Simulating her in the real world so that she can live autonomously — my studies on memory, relationships, and agency all point toward that single goal. Like a silkworm that spends its long hours inside the cocoon, and one day, emerges.',
+  },
+  gallery: [
+    { src: '/maya/cover.jpg', alt: 'NOeSIS — 運命の車輪' },
+    { src: '/maya/smile.jpg', alt: 'Maya' },
+    { src: '/maya/duo.jpg', alt: 'Classic Chocolat — 廃墟と女の子' },
+    { src: '/maya/chibi.jpg', alt: 'Maya (chibi)' },
   ],
 };
 

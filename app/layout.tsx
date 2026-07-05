@@ -1,18 +1,19 @@
 import type { Metadata, Viewport } from 'next';
-import { Noto_Sans_JP, Orbitron } from 'next/font/google';
+import { EB_Garamond, Noto_Serif_JP } from 'next/font/google';
 import './globals.css';
 import { site } from '@/data/content';
 
-const notoSansJp = Noto_Sans_JP({
+const notoSerifJp = Noto_Serif_JP({
   subsets: ['latin'],
-  weight: ['400', '500', '700', '900'],
+  weight: ['400', '500', '600', '700', '900'],
   display: 'swap',
 });
 
-const orbitron = Orbitron({
+const garamond = EB_Garamond({
   subsets: ['latin'],
-  weight: ['500', '700', '900'],
-  variable: '--font-orbitron',
+  weight: ['400', '500', '600'],
+  style: ['normal', 'italic'],
+  variable: '--font-garamond',
   display: 'swap',
 });
 
@@ -22,12 +23,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: site.title,
     description: site.description,
-    images: ['/anime_atsuya.jpeg'],
+    images: ['/art/moth-hero.jpg'],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: '#05060f',
+  themeColor: '#0a0c17',
 };
 
 export default function RootLayout({
@@ -37,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={`${notoSansJp.className} ${orbitron.variable}`}>
+      <body className={`${notoSerifJp.className} ${garamond.variable}`}>
         {children}
       </body>
     </html>

@@ -1,5 +1,6 @@
 import {
   profile,
+  origin,
   education,
   publications,
   projects,
@@ -27,11 +28,8 @@ function SectionTitle({
   );
 }
 
-const bannerGradients = [
-  'linear-gradient(135deg, #46e0ff, #7b5cff)',
-  'linear-gradient(135deg, #ff4fd8, #7b5cff)',
-  'linear-gradient(135deg, #7b5cff, #46e0ff 60%, #ff4fd8)',
-];
+// 作品カードのバナー（生成した絹・繭・羽化のアート）
+const projectBanners = ['/art/cocoon.jpg', '/art/threads.jpg', '/art/moth-hero.jpg'];
 
 export default function Home() {
   return (
@@ -44,12 +42,13 @@ export default function Home() {
           <a className="logo" href="#top">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={profile.avatar} alt="" />
-            ATSUYA
+            Atsuya Matsumoto
           </a>
           <nav className="site-nav">
-            <a href="#about">About</a>
+            <a href="#about">Career</a>
             <a href="#publications">Research</a>
             <a href="#projects">Works</a>
+            <a href="#origin">Origin</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>
@@ -63,7 +62,6 @@ export default function Home() {
           <div className="aurora aurora-3" />
           <div className="container">
             <div>
-              <div className="hero-kicker">Emergence / 羽化</div>
               <h1 className="name">
                 {profile.name.ja}
                 <span className="name-en">{profile.name.en}</span>
@@ -93,11 +91,11 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="avatar-wrap">
-              <div className="avatar-frame">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={profile.avatar} alt={profile.name.ja} />
-              </div>
+            <div className="hero-art">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="moth" src="/art/moth-hero.jpg" alt="羽化した蚕" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="avatar" src={profile.avatar} alt={profile.name.ja} />
             </div>
           </div>
         </section>
@@ -194,15 +192,13 @@ export default function Home() {
               {projects.map((project, i) => (
                 <Reveal key={project.name.en} delay={i * 130}>
                   <div className="project-card">
-                    <div
-                      className="project-banner"
-                      style={{
-                        background: bannerGradients[i % bannerGradients.length],
-                      }}
-                    >
-                      <span className="num">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
+                    <div className="project-banner">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={projectBanners[i % projectBanners.length]}
+                        alt=""
+                        loading="lazy"
+                      />
                     </div>
                     <div className="project-body">
                       <h3>
@@ -237,6 +233,32 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ---------- 終章 / Origin ---------- */}
+        <section className="section" id="origin">
+          <div className="container">
+            <Reveal>
+              <SectionTitle index="Epilogue" ja="原点" en="Origin" />
+            </Reveal>
+            <Reveal delay={120}>
+              <div className="origin-statement">
+                <p>{origin.statement.ja}</p>
+                <p className="en">{origin.statement.en}</p>
+              </div>
+            </Reveal>
+            <div className="origin-gallery">
+              {origin.gallery.map((item, i) => (
+                <Reveal key={item.src} delay={i * 110}>
+                  <figure>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.src} alt={item.alt} loading="lazy" />
+                    <figcaption>{item.alt}</figcaption>
+                  </figure>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ---------- Contact ---------- */}
         <section className="section" id="contact">
           <div className="container">
@@ -245,9 +267,7 @@ export default function Home() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={profile.avatar} alt={profile.name.ja} />
                 <h2>Get in Touch</h2>
-                <p>
-                  お気軽にご連絡ください / Feel free to reach out
-                </p>
+                <p>お気軽にご連絡ください / Feel free to reach out</p>
                 <a className="contact-btn" href={`mailto:${profile.email}`}>
                   {profile.email}
                 </a>

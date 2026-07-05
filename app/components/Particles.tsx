@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 
-// 「羽化」— 鱗粉のような光の粒子が下から上へ舞い上がる背景演出
+// 絹糸の鱗粉のような光の粒が、夜のなかを静かに舞い上がる背景演出
 export default function Particles() {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -25,23 +25,29 @@ export default function Particles() {
     resize();
     window.addEventListener('resize', resize);
 
-    const N = Math.min(90, Math.floor((window.innerWidth / 1400) * 90) + 40);
-    const particles = Array.from({ length: N }, () => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: (Math.random() * 1.9 + 0.6) * DPR,
-      vx: (Math.random() - 0.5) * 0.18 * DPR,
-      vy: -(Math.random() * 0.4 + 0.1) * DPR,
-      hue: 185 + Math.random() * 110, // cyan → violet → magenta
-      tw: Math.random() * Math.PI * 2,
-    }));
+    const N = Math.min(70, Math.floor((window.innerWidth / 1400) * 70) + 30);
+    const particles = Array.from({ length: N }, () => {
+      const isCrimson = Math.random() < 0.12; // まれに紅い糸くず
+      return {
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: (Math.random() * 1.7 + 0.5) * DPR,
+        vx: (Math.random() - 0.5) * 0.12 * DPR,
+        vy: -(Math.random() * 0.28 + 0.06) * DPR,
+        hue: isCrimson ? 340 : 248 + Math.random() * 14,
+        sat: isCrimson ? 65 : 32,
+        light: isCrimson ? 68 : 88,
+        tw: Math.random() * Math.PI * 2,
+        sway: Math.random() * 0.4 + 0.15,
+      };
+    });
 
     const tick = () => {
       ctx.clearRect(0, 0, w, h);
       for (const p of particles) {
-        p.x += p.vx;
+        p.tw += 0.014;
+        p.x += p.vx + Math.sin(p.tw) * p.sway * DPR * 0.3;
         p.y += p.vy;
-        p.tw += 0.02;
         if (p.y < -12) {
           p.y = h + 12;
           p.x = Math.random() * w;
@@ -49,9 +55,9 @@ export default function Particles() {
         if (p.x < -12) p.x = w + 12;
         else if (p.x > w + 12) p.x = -12;
 
-        const alpha = 0.32 + Math.sin(p.tw) * 0.24;
+        const alpha = 0.26 + Math.sin(p.tw) * 0.2;
         ctx.beginPath();
-        ctx.fillStyle = `hsla(${p.hue}, 100%, 72%, ${alpha})`;
+        ctx.fillStyle = `hsla(${p.hue}, ${p.sat}%, ${p.light}%, ${alpha})`;
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
       }
