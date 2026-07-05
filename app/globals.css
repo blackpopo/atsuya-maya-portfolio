@@ -341,8 +341,9 @@ a:hover {
   border-radius: 999px;
   background: var(--bg-soft);
   color: var(--text);
-  font-size: 0.98rem;
-  letter-spacing: 0.06em;
+  font-family: var(--font-serif-latin);
+  font-size: 1.02rem;
+  letter-spacing: 0.08em;
   transition:
     transform 0.3s,
     box-shadow 0.3s,
@@ -356,74 +357,42 @@ a:hover {
   box-shadow: 0 0 22px rgba(232, 228, 245, 0.3);
 }
 
-/* ヒーロー右：羽化した蚕のアート＋アバター */
-.hero-art {
+/* ヒーロー右：切り抜きの白い蚕蛾が夜に浮かぶ */
+.hero-moth {
   position: relative;
   justify-self: center;
   width: 100%;
-  max-width: 460px;
+  max-width: 440px;
   animation: float 8s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-16px) rotate(1.2deg);
   }
 }
 
-.hero-art .moth {
+.hero-moth img {
   width: 100%;
-  border-radius: 18px;
-  border: 1px solid var(--border-strong);
-  box-shadow:
-    0 24px 70px rgba(0, 0, 0, 0.55),
-    0 0 60px rgba(168, 156, 232, 0.25);
   display: block;
-}
-
-.hero-art .avatar {
-  position: absolute;
-  bottom: -26px;
-  left: -26px;
-  width: 118px;
-  height: 118px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: 50% 12%;
-  border: 3px solid var(--silk);
-  box-shadow:
-    0 10px 34px rgba(0, 0, 0, 0.6),
-    0 0 30px rgba(232, 228, 245, 0.45);
-  animation: breathe 5s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%,
-  100% {
-    box-shadow:
-      0 10px 34px rgba(0, 0, 0, 0.6),
-      0 0 22px rgba(232, 228, 245, 0.35);
-  }
-  50% {
-    box-shadow:
-      0 10px 34px rgba(0, 0, 0, 0.6),
-      0 0 44px rgba(232, 228, 245, 0.6);
-  }
+  filter: drop-shadow(0 0 34px rgba(232, 228, 245, 0.35))
+    drop-shadow(0 0 90px rgba(168, 156, 232, 0.25));
 }
 
 @media (max-width: 840px) {
-  .hero-art .avatar {
-    left: 0;
+  .hero-moth {
+    max-width: 280px;
+    margin: 0 auto;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-art,
-  .hero-art .avatar,
+  .hero-moth,
   .aurora {
     animation: none;
   }
@@ -493,6 +462,101 @@ a:hover {
   font-style: italic;
   font-size: 1.05rem;
   color: var(--text-sub);
+}
+
+/* 出典（Steamリンク） */
+.origin-works {
+  margin-bottom: 2.6rem;
+}
+
+.origin-works ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.origin-works li a {
+  display: inline-block;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg-soft);
+  color: var(--text);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    border-color 0.3s;
+}
+
+.origin-works li a:hover {
+  text-decoration: none;
+  transform: translateY(-3px);
+  border-color: var(--silk);
+  box-shadow: 0 0 22px rgba(232, 228, 245, 0.3);
+}
+
+.origin-works .steam {
+  font-family: var(--font-serif-latin);
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--lavender);
+  margin-left: 0.5rem;
+}
+
+.origin-works .works-note {
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  margin-top: 0.7rem;
+}
+
+.origin-credit {
+  color: var(--text-sub);
+  font-size: 0.85rem;
+  margin-top: 1.4rem;
+  text-align: right;
+}
+
+/* 見上げる構図：黒いうさぎ（私）と、舞う白い蚕蛾（一夜さん） */
+.origin-scene {
+  position: relative;
+  height: 320px;
+  margin-top: 2rem;
+  pointer-events: none;
+}
+
+.origin-scene .scene-rabbit {
+  position: absolute;
+  right: 14%;
+  bottom: 0;
+  width: 180px;
+  filter: drop-shadow(0 0 22px rgba(168, 156, 232, 0.2));
+}
+
+.origin-scene .scene-moth {
+  position: absolute;
+  right: calc(14% + 190px);
+  bottom: 165px;
+  width: 140px;
+  filter: drop-shadow(0 0 26px rgba(232, 228, 245, 0.4));
+  animation: float 7s ease-in-out infinite;
+}
+
+@media (max-width: 640px) {
+  .origin-scene {
+    height: 240px;
+  }
+  .origin-scene .scene-rabbit {
+    right: 6%;
+    width: 130px;
+  }
+  .origin-scene .scene-moth {
+    right: calc(6% + 140px);
+    bottom: 120px;
+    width: 100px;
+  }
 }
 
 .origin-gallery {
@@ -745,7 +809,9 @@ a:hover {
   color: #c5bbee;
   border: 1px solid rgba(168, 156, 232, 0.38);
   border-radius: 6px;
-  font-size: 0.84rem;
+  font-family: var(--font-serif-latin);
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
   padding: 0.1rem 0.65rem;
 }
 
@@ -758,17 +824,6 @@ a:hover {
   padding: 3rem 1.6rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 0 60px rgba(168, 156, 232, 0.12);
-}
-
-.contact-card img {
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: 50% 12%;
-  border: 2px solid var(--border-strong);
-  box-shadow: 0 0 26px rgba(232, 228, 245, 0.35);
-  margin-bottom: 1.2rem;
 }
 
 .contact-card h2 {
@@ -792,8 +847,9 @@ a:hover {
   border: 1px solid var(--border-strong);
   background: rgba(232, 228, 245, 0.08);
   color: var(--silk);
-  font-size: 1.08rem;
-  font-weight: 600;
+  font-family: var(--font-serif-latin);
+  font-size: 1.12rem;
+  font-weight: 500;
   letter-spacing: 0.06em;
   box-shadow: 0 0 26px rgba(168, 156, 232, 0.25);
   transition:
@@ -813,6 +869,8 @@ a:hover {
   border-top: 1px solid var(--border);
   padding: 2.4rem 0 3.2rem;
   color: var(--text-sub);
-  font-size: 0.92rem;
+  font-family: var(--font-serif-latin);
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
   text-align: center;
 }

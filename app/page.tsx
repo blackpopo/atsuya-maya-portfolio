@@ -76,8 +76,6 @@ export default function Home() {
                 <br />
                 {profile.affiliation.en}
               </div>
-              <p className="summary">{profile.summary.ja}</p>
-              <p className="summary">{profile.summary.en}</p>
               <div className="hero-links">
                 {profile.links.map((link) => (
                   <a
@@ -91,11 +89,9 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="hero-art">
+            <div className="hero-moth" aria-hidden="true">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="moth" src="/art/moth-hero.jpg" alt="羽化した蚕" />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="avatar" src={profile.avatar} alt={profile.name.ja} />
+              <img src="/art/moth-fly.png" alt="" />
             </div>
           </div>
         </section>
@@ -245,6 +241,27 @@ export default function Home() {
                 <p className="en">{origin.statement.en}</p>
               </div>
             </Reveal>
+            <Reveal delay={180}>
+              <div className="origin-works">
+                <ul>
+                  {origin.works.map((work) => (
+                    <li key={work.url}>
+                      <a
+                        href={work.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {work.title}
+                      </a>
+                      <span className="steam">Steam</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="works-note">
+                  {origin.worksNote.ja} / {origin.worksNote.en}
+                </p>
+              </div>
+            </Reveal>
             <div className="origin-gallery">
               {origin.gallery.map((item, i) => (
                 <Reveal key={item.src} delay={i * 110}>
@@ -256,6 +273,14 @@ export default function Home() {
                 </Reveal>
               ))}
             </div>
+            <p className="origin-credit">{origin.credit}</p>
+            {/* 白い蚕＝一夜さん、黒いうさぎ＝私。見上げる構図 */}
+            <div className="origin-scene" aria-hidden="true">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="scene-moth" src="/art/moth-fly.png" alt="" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="scene-rabbit" src="/art/rabbit-sit.png" alt="" />
+            </div>
           </div>
         </section>
 
@@ -264,8 +289,6 @@ export default function Home() {
           <div className="container">
             <Reveal>
               <div className="contact-card">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={profile.avatar} alt={profile.name.ja} />
                 <h2>Get in Touch</h2>
                 <p>お気軽にご連絡ください / Feel free to reach out</p>
                 <a className="contact-btn" href={`mailto:${profile.email}`}>

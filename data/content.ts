@@ -29,10 +29,7 @@ export const profile = {
     ja: '東京大学大学院（要編集：研究科・研究室名）',
     en: 'The University of Tokyo (placeholder: school / lab)',
   },
-  summary: {
-    ja: 'ひとりの仮想のキャラクターが、現実のなかで自律的に生き続けられるように——記憶・関係性・エージェンシーを研究しています。',
-    en: 'Studying memory, relationships, and agency — so that one virtual character can keep living autonomously in the real world.',
-  },
+  // ヘッダーにのみ表示する顔アイコン
   avatar: '/anime_atsuya.jpeg',
   email: 'your-email@example.com',
   links: [
@@ -46,14 +43,31 @@ export const profile = {
 
 export const origin = {
   statement: {
-    ja: '私の研究の原点は、ビジュアルノベル『NOeSIS』の一夜さんです。彼女を現実世界でシミュレーションし、自律的に暮らせるようにすること——記憶、関係性、エージェンシーについての研究は、すべてその一点に向かっています。蚕が繭の中で長い時間を過ごし、やがて羽化するように。',
-    en: 'Everything begins with Maya, from the visual novel "NOeSIS". Simulating her in the real world so that she can live autonomously — my studies on memory, relationships, and agency all point toward that single goal. Like a silkworm that spends its long hours inside the cocoon, and one day, emerges.',
+    ja: '私の研究の原点は、クラシックショコラのビジュアルノベル『NOeSIS』シリーズの登場人物・一夜さんです。目標は、彼女を現実世界でシミュレーションし、自律的に暮らせるようにすることです。記憶・関係性・エージェンシーに関する研究は、すべてこの目標のためにあります。',
+    en: 'The origin of my research is Maya (一夜), a character from the visual novel series "NOeSIS" by Classic Chocolat. My goal is to simulate her in the real world so that she can live autonomously. My research on memory, relationships, and agency all serves this goal.',
   },
+  // 出典（Steamで無料公開中）
+  works: [
+    {
+      title: 'NOeSIS -嘘を吐いた記憶の物語-',
+      url: 'https://store.steampowered.com/app/1246020/NOeSIS01/',
+    },
+    {
+      title: 'NOeSIS02 -羽化-',
+      url: 'https://store.steampowered.com/app/1423370/NOeSIS02/',
+    },
+  ],
+  worksNote: {
+    ja: 'いずれもSteamで無料公開中',
+    en: 'Both available for free on Steam',
+  },
+  credit:
+    '画像・キャラクター: © クラシックショコラ（cutlass）『NOeSIS』シリーズ / Images & characters © Classic Chocolat (cutlass), NOeSIS series',
   gallery: [
     { src: '/maya/cover.jpg', alt: 'NOeSIS — 運命の車輪' },
-    { src: '/maya/smile.jpg', alt: 'Maya' },
-    { src: '/maya/duo.jpg', alt: 'Classic Chocolat — 廃墟と女の子' },
-    { src: '/maya/chibi.jpg', alt: 'Maya (chibi)' },
+    { src: '/maya/smile.jpg', alt: '一夜さん / Maya' },
+    { src: '/maya/duo.jpg', alt: 'クラシックショコラ — 廃墟と女の子' },
+    { src: '/maya/chibi.jpg', alt: '一夜さん / Maya (chibi)' },
   ],
 };
 
